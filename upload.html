@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+</head>
+
+<body>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap-FileUpload.css" />
+<div class="fileupload-wrapper"><div id="myUpload"></div></div>
+<input id="addBtn" type="file" multiple="multiple" />
+<button id="uploadStart">Upload the files!</button>
+<button id="file" value="file-id">Remove this file</button>
+<button type="reset" id="reset">Reset the form</button>
+<script>
+	
+$("#myUpload").bootstrapFileUpload({
+	url: ""
+});
+
+$("#myUpload2").bootstrapFileUpload({
+	url: ""
+});
+$("#myUpload").bootstrapFileUpload({
+	url: "",
+	fileTypes: {
+		images: [],
+		files: ["avi", "flv", "swf", "m4v", "mkv", "mov", "mp4", "ogv", "wmv"]
+	}
+});
+$("#myUpload").bootstrapFileUpload({
+	url: "",
+	onInit: function () {
+		window.alert("initialized!");
+	},
+    onFileAdded: function () {
+    	window.alert("file added!");
+    }
+});
+$("#myUpload").bootstrapFileUpload({
+	url: ""
+});
+
+$("#addBtn").on('change', function (e) {
+	$.bootstrapFileUpload('addFile', "myUpload", e);
+});
+$("#myUpload").bootstrapFileUpload({
+	url: ""
+});
+
+$("#uploadStart").on('click', function (e) {
+	e.preventDefault();
+	$.bootstrapFileUpload('uploadStart', "myUpload");
+});
+$("#myUpload").bootstrapFileUpload({
+	url: ""
+});
+
+$("#file").on('click', function () {
+	$.bootstrapFileUpload('removeFile', "myUpload", $(this).val());
+});
+$("#myUpload").bootstrapFileUpload({
+	url: ""
+});
+
+$("#reset").on('click', function (e) {
+	e.preventDefault();
+	$.bootstrapFileUpload('resetUpload', "myUpload");
+});
+</script>
+
+</body>
+
+</html>
